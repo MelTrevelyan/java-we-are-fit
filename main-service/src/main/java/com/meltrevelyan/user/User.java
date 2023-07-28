@@ -28,6 +28,8 @@ public class User {
     private String phoneNumber;
     @Column(name = "membership_start")
     private LocalDateTime membershipStart;
-    @Column(name = "membership_Expiration")
+    @Column(name = "membership_expiration")
     private LocalDateTime membershipExpiration;
+    @Column(name = "is_active")
+    private Boolean isActive;
 }

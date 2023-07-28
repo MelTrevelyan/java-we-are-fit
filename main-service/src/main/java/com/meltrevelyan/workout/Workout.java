@@ -27,6 +27,8 @@ public class Workout {
     private LocalDateTime date;
     @Column(name = "is_paid")
     private Boolean isPaid;
+    @Enumerated(value = EnumType.STRING)
+    private WorkoutStatus status;
     @ManyToOne
     @JoinColumn(name = "trainer_id", nullable = false)
     private Trainer trainer;
