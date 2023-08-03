@@ -18,7 +18,6 @@ public class UserUpdateDto {
     private String firstName;
     @Size(min = 3, max = 100, message = "Length must be between 3 and 100 symbols")
     private String lastName;
-    @NotEmpty
     private String phoneNumber;
     @PastOrPresent
     private LocalDateTime membershipStart;

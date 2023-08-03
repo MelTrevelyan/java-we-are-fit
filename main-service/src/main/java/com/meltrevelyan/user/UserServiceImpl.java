@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     @Override
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         if (userUpdateDto.getFirstName() != null) {
             user.setFirstName(userUpdateDto.getFirstName());
         }
-        if (user.getLastName() != null) {
+        if (userUpdateDto.getLastName() != null) {
             user.setLastName(userUpdateDto.getLastName());
         }
         if (userUpdateDto.getEmail() != null) {
