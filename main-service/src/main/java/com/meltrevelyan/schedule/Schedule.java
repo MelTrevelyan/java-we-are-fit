@@ -19,7 +19,9 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "sch_day")
     private String day;
+    @Column(name = "sch_date")
     private LocalDateTime date;
 //    private List<Workout> workouts;
 }
