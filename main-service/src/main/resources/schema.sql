@@ -18,13 +18,13 @@
 
   CREATE TABLE IF NOT EXISTS trainers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  email VARCHAR(100),
-  phone_number VARCHAR(20),
-  first_name VARCHAR(50),
-  last_name VARCHAR(100),
-  employment_date TIMESTAMP,
-  education VARCHAR(300),
-  specifications VARCHAR(300),
+  email VARCHAR(100)                        NOT NULL,
+  phone_number VARCHAR(20)                  NOT NULL,
+  first_name VARCHAR(50)                    NOT NULL,
+  last_name VARCHAR(100)                    NOT NULL,
+  employment_date TIMESTAMP                 NOT NULL,
+  education VARCHAR(300)                    NOT NULL,
+  specifications VARCHAR(300)               NOT NULL,
   CONSTRAINT uq_trainer_email UNIQUE (email),
   CONSTRAINT uq_trainer_phone UNIQUE (phone_number)
   );
