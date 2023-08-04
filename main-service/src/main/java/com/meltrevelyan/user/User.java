@@ -1,12 +1,11 @@
 package com.meltrevelyan.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.meltrevelyan.workout.Workout;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -32,4 +31,7 @@ public class User {
     private LocalDateTime membershipExpiration;
     @Column(name = "is_active")
     private Boolean isActive;
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "visitors")
+    private List<Workout> workouts;
 }

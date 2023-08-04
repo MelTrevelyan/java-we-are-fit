@@ -1,13 +1,12 @@
 package com.meltrevelyan.workout;
 
 import com.meltrevelyan.trainer.Trainer;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.meltrevelyan.user.User;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,8 +28,14 @@ public class Workout {
     private Boolean isPaid;
     @Enumerated(value = EnumType.STRING)
     private WorkoutStatus status;
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "trainer_id", nullable = false)
     private Trainer trainer;
-//    private List<User> visitors;
+    @ToString.Exclude
+    @ManyToMany
+    @JoinTable(name = "workout_visitors",
+    joinColumns = @JoinColumn(name = "visitor_id"),
+    inverseJoinColumns = @JoinColumn(name = "workout_id"))
+    private List<User> visitors;
 }

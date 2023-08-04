@@ -31,13 +31,22 @@
 
   CREATE TABLE IF NOT EXISTS workouts (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  name VARCHAR(50),
-  description VARCHAR(500),
-  trainer_id BIGINT,
-  place_info VARCHAR(50),
-  date TIMESTAMP,
-  is_paid BOOLEAN,
-  status VARCHAR(15)
+  name VARCHAR(50)                          NOT NULL,
+  description VARCHAR(500)                  NOT NULL,
+  trainer_id BIGINT                         NOT NULL,
+  place_info VARCHAR(50)                    NOT NULL,
+  date TIMESTAMP                            NOT NULL,
+  is_paid BOOLEAN                           NOT NULL,
+  status VARCHAR(15)                        NOT NULL,
+  CONSTRAINT fk_workouts_to_trainers FOREIGN KEY(trainer_id) REFERENCES trainers(id)
+  );
+
+  CREATE TABLE IF NOT EXISTS workout_visitors (
+  workout_id BIGINT                         NOT NULL,
+  visitor_id BIGINT                         NOT NULL,
+  CONSTRAINT pk_workout_visitors_to_workouts PRIMARY KEY (workout_id, visitor_id),
+  CONSTRAINT fk_workout_visitors_to_workouts FOREIGN KEY(workout_id) REFERENCES workouts(id),
+  CONSTRAINT fk_workout_visitors_to_users FOREIGN KEY(visitor_id) REFERENCES users(id)
   );
 
   CREATE TABLE IF NOT EXISTS schedules (
